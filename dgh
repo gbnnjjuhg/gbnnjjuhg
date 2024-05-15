@@ -1,0 +1,252 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>注册</title>
+</head>
+<style type="text/css">
+    body {
+        background-image: url(images/01.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 650px;
+        z-index: 10;
+    }
+
+    .title {
+        width: 50%;
+        height: 60px;
+        float: left;
+        clear: both;
+        margin-left: 10%;
+        margin-top: -5%;
+        font-size: 30px;
+        color: #FFF;
+        letter-spacing: 5px;
+    }
+
+    .page {
+        width: 470px;
+        height: 630px;
+        position: absolute;
+        right: 240px;
+        top: 10px;
+        background-color: #FFF;
+        opacity: 0.9;
+    }
+
+    .main {
+        width: 400px;
+        height: 600px;
+        position: absolute;
+        left: 40px;
+        top: 30px;
+    }
+
+    .confirm img {
+        width: 134px;
+        height: 40px;
+        vertical-align: middle;
+    }
+
+    .bt {
+        position: absolute;
+        top: 490px;
+        left: 90px;
+    }
+
+    .bt-1 {
+        width: 100px;
+        height: 45px;
+        font-size: 24px;
+        letter-spacing: 5px;
+        text-align: center;
+        border-radius: 5px;
+        border-color: #CCC;
+        color: #FFF;
+    }
+
+    .footer {
+        display: flex;
+        width: 99%;
+        margin: auto;
+        margin-top: 0px;
+        justify-content: center;
+        background-color: white;
+        position: absolute;
+        top: 650px;
+    }
+
+    div#nav4 {
+        width: 30%;
+        height: 100%;
+        float: left;
+        flex-shrink: 0;
+    }
+
+    ul.box4 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    ul.box4 li {
+        width: 80px;
+        display: inline-block;
+        text-align: center;
+        margin-top: 8%;
+    }
+
+    div#copyright {
+        width: 40%;
+        height: 100%;
+        float: left;
+        flex-shrink: 0;
+    }
+
+    div#nav5 {
+        width: 30%;
+        height: 100%;
+        float: left;
+        flex-shrink: 0;
+    }
+
+    ul.box5 {
+        text-align: center;
+    }
+
+    ul.box5 li {
+        width: 80px;
+        display: inline-block;
+        text-align: center;
+        align-items: center;
+        font-size: 13px;
+        margin-top: 8%;
+    }
+</style>
+
+<body>
+    <span class="title"><b>大学生活动管理系统</b> | 注册</span>
+    <div class="page">
+        <div class="main">
+            <form  method="post">
+                <table width="420" height="20" align="center" cellpadding="10" cellspacing="5">
+                    <tr>
+                        <td align="right">用户名：</td>
+                        <td>
+                            <input name="username" type="text" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">性别：</td>
+                        <td>
+                            <input name="sex" type="radio" value="男" />男&nbsp;&nbsp;
+                            <input name="sex" type="radio" value="女" />女
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">年龄：</td>
+                        <td>
+                            <input type="number" name="age" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">电话：</td>
+                        <td>
+                            <input type="number" name="telephone" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">大学：</td>
+                        <td>
+                            <input type="text" name="school" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">学院：</td>
+                        <td>
+                            <input type="text" name="college" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">专业班级：</td>
+                        <td>
+                            <input type="text" name="major" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">密码：</td>
+                        <td>
+                            <input name="password" type="password" maxlength="20" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">确认密码：</td>
+                        <td>
+                            <input name="password2" type="password" maxlength="20" size="20" />
+                        </td>
+                    </tr>
+                    <tr class="confirm">
+                        <td align="right">验证码：</td>
+                        <td>
+                            <input type="text" name="validcode" style="width:70px;">
+                            <a href="javascript:void(0)"><img id="codeimg"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+                <span class="bt">
+                    <table width="140" align="center" cellpadding="15">
+                        <tr>
+                            <td>
+                                <input name="register" type="submit" id="" value="注册" class="bt-1"
+                                    style="background-color:#6F0" />
+                            </td>
+                            <td>
+                                <input name="reset" type="reset" value="清空" class="bt-1"
+                                    style="background-color:#09F" />
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div id="nav4">
+            <ul class="box4">
+                <li><a style="color: grey;" href="https://ac.nowcoder.com/acm/contest/1168">关于我们</a></li>
+                <li><a style="color: grey;"
+                        href="http://cas.yujtu.edu.cn/cas/login?service=http%3A%2F%2Fportal.yujtu.edu.cn%2Fdcp%2Fforward.action%3Fpath%3D%2Fportal%2Fportal%26p%3Dhome">友情链接</a>
+                </li>
+                <li><a style="color: grey;" href="https://jwxt.yujtu.edu.cn/index.action">帮助中心</a></li>
+                <li><a style="color: grey;" href="http://www.yujtu.jx.cn/">用户协议</a></li>
+            </ul>
+        </div>
+        <div id="copyright">
+            <p style="text-align: center; font-size: 29px; margin-top: 3%;">
+                作业</p>
+            <p style="text-align: center; font-size: 23px; margin-top: -2%;">
+                powered by 666y Copyright&copy 2021/11/28</p>
+
+        </div>
+        <div id="nav5">
+            <ul class="box5">
+                <li><img src="images/icon1.png" style="width: 22px;"> <br>
+                    <a style="color: black;" href="https://www.bilibili.com/">哔哩哔哩</a>
+                </li>
+                <li><img src="images/icon2.png" style="width: 22px;"> <br>
+                    <a style="color: black;" href="https://www.csdn.net/">官方微信</a>
+                </li>
+                <li><img src="images/icon3.png" style="width: 22px;"> <br>
+                    <a style="color: black;" href="https://cn.vuejs.org/">官方微博</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
