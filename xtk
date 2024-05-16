@@ -1,0 +1,100 @@
+.game_inner__left .center .enemy_xp.killed {
+			  -webkit-animation: hit 0.3s 0.12s forwards;
+			          animation: hit 0.3s 0.12s forwards;
+			}
+			.game_inner__left .center .enemy_sprite {
+			  background: url("https://assets.codepen.io/217233/ssEnemyIdle_1.png");
+			  -webkit-animation: none;
+			          animation: none;
+			  width: 200px;
+			  -webkit-animation: enemyIdle 0.5s steps(7, end) infinite;
+			          animation: enemyIdle 0.5s steps(7, end) infinite;
+			  transform: scaleX(-5) scaleY(5);
+			  position: relative;
+			}
+			.game_inner__left .center .enemy_sprite.boss {
+			  background: url("https://assets.codepen.io/217233/ktkTrostIdle.png");
+			  -webkit-animation: bossIdle 1s steps(7, end) infinite;
+			          animation: bossIdle 1s steps(7, end) infinite;
+			  width: 160px;
+			  top: 10px;
+			  left: 40px;
+			  height: 105px;
+			  filter: hue-rotate(0deg) !important;
+			}
+			.game_inner__left .center .enemy_sprite.boss.pressed {
+			  -webkit-animation: bossHit 0.15s steps(3, end);
+			          animation: bossHit 0.15s steps(3, end);
+			}
+			.game_inner__left .center .enemy_sprite.boss.killed {
+			  -webkit-animation: bossKilled 0.8s steps(5, end);
+			          animation: bossKilled 0.8s steps(5, end);
+			}
+			.game_inner__left .center .enemy_sprite.pressed {
+			  -webkit-animation: enemyHit 0.15s steps(3, end);
+			          animation: enemyHit 0.15s steps(3, end);
+			}
+			.game_inner__left .center .enemy_sprite.killed {
+			  -webkit-animation: enemyKilled 0.8s steps(5, end);
+			          animation: enemyKilled 0.8s steps(5, end);
+			}
+			.game_inner__left .center .enemy_health {
+			  width: 190px;
+			  height: 12px;
+			  position: absolute;
+			  left: 0;
+			  font-size: 13px;
+			  right: 0;
+			  line-height: 39px;
+			  border-radius: 10px;
+			  top: 10px;
+			  padding-top: 0px;
+			  margin: auto;
+			  background: url(https://assets.codepen.io/217233/ktkEnemyHealth.png);
+			  -webkit-animation: health 2s infinite;
+			          animation: health 2s infinite;
+			}
+			.game_inner__left .center .enemy_health_stats {
+			  font-size: 7px;
+			  padding-top: 6px;
+			  text-align: left;
+			}
+			.game_inner__left .center .enemy_health_stats .name {
+			  float: left;
+			}
+			.game_inner__left .center .enemy_health_stats .level {
+			  float: right;
+			}
+			.game_inner__left .center .enemy_health_inner {
+			  position: absolute;
+			  left: 4px;
+			  top: 3px;
+			  height: 5px;
+			  border-radius: 10px;
+			  transition: all 0.1s;
+			  max-width: 182px;
+			  background: url(https://assets.codepen.io/217233/ktkEnemyHealthInner.png);
+			}
+			.game_inner__left .spaceBar {
+			  width: 390px;
+			  margin-top: 50px;
+			  height: 50px;
+			  background: white;
+			  position: relative;
+			  top: 0;
+			  border-radius: 6px;
+			  box-shadow: 0 10px #d6d6d6;
+			  -webkit-animation: press2 0.1s forwards;
+			          animation: press2 0.1s forwards;
+			}
+			@-webkit-keyframes health {
+			  0% {
+			    top: 10px;
+			  }
+			  50% {
+			    top: 13px;
+			  }
+			  100% {
+			    top: 10px;
+			  }
+			}
