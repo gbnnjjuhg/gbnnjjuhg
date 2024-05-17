@@ -1,0 +1,111 @@
+methods: {
+		    punch() {
+		      if (_this.canAttack && !_this.gamewin && !_this.gameover) {
+		        _this.tooltip = false;
+		        _this.tooltipTimer = 0;
+		
+		        _this.canAttack = !_this.canAttack;
+		        _this.pressed = !_this.pressed;
+		        _this.damageAnim = Math.floor(Math.random() * 10) + 1;
+		
+		        let hitSound = Math.floor(Math.random() * 3) + 1;
+		        let gruntSound = Math.floor(Math.random() * 9) + 1;
+		        _this.audioController.play(`swordHit${hitSound}`);
+		        _this.audioController.play(`grunt${gruntSound}`);
+		
+		        setTimeout(function () {
+		          _this.pressed = !_this.pressed;
+		        }, 150);
+		
+		        setTimeout(function () {
+		          if (_this.enemyKilled == false) {
+		            _this.canAttack = !_this.canAttack;
+		          }
+		        }, 500 - 50 * _this.speed);
+		
+		        if (_this.enemy.health > _this.damage) {
+		          _this.enemy.health -= _this.damage;
+		        } else {
+		          _this.canAttack = false;
+		
+		          let deathSound = Math.floor(Math.random() * 4) + 1;
+		          _this.audioController.play(`death${deathSound}`);
+		
+		          _this.enemy.health = 0;
+		          _this.enemiesDefeated++;
+		          _this.enemyKilled = true;
+		
+		          let baseXpPerKill = 10 + Math.floor(Math.random() * 3) + 1;
+		          let xpPerKillWithBonus = Math.ceil(
+		            baseXpPerKill * _this.stage +
+		              ((baseXpPerKill * _this.stage) / 100) * (_this.intelligence * 10)
+		          );
+		
+		          _this.xp += xpPerKillWithBonus;
+		          _this.xpGained = xpPerKillWithBonus;
+		
+		          let baseGoldPerKill = 10 + Math.floor(Math.random() * 3) + 1;
+		          let goldPerKillWithBonus = Math.ceil(
+		            baseGoldPerKill * _this.stage +
+		              ((baseGoldPerKill * _this.stage) / 100) * (_this.luck * 10)
+		          );
+		
+		          _this.goldGained = goldPerKillWithBonus;
+		          _this.gold += goldPerKillWithBonus;
+		
+		          if (_this.boss) {
+		            _this.audioController.play("notpossible");
+		            window.clearInterval(timer);
+		            _this.gamewin = true;
+		          } else {
+		            if (_this.enemiesDefeated > _this.enemiesPerStage - 1) {
+		              _this.stageComplete = true;
+		
+		              setTimeout(function () {
+		                _this.shoppingPhase = true;
+		
+		                _this.audioController.play("shopWoosh");
+		                _this.audioController.play("shopBell");
+		
+		                if (_this.stage == 1) {
+		                  _this.audioController.play("fool");
+		                }
+		
+		                if (_this.stage == 3) {
+		                  _this.audioController.play("neverstop");
+		                }
+		
+		                if (_this.stage == 5) {
+		                  _this.audioController.play("purchases");
+		                }
+		
+		                if (_this.stage == 7) {
+		                  _this.audioController.play("persistance");
+		                }
+		
+		                if (_this.stage == 9) {
+		                  _this.audioController.play("mercy");
+		                }
+		
+		                console.log("lowpass");
+		                lowpassNode.frequency.value = 250;
+		              }, 1000);
+		
+		              // Use Web Audio to create an audio graph that uses the stream from the audio element
+		            } else {
+		              setTimeout(function () {
+		                console.log(_this.enemiesDefeated, _this.stage);
+		                if (_this.enemiesDefeated == 10 && _this.stage == 10) {
+		                  _this.enemy = new Enemy(3000, "King Trost");
+		                  _this.boss = true;
+		                } else {
+		                  _this.enemy = new Enemy(
+		                    7 * (_this.enemiesDefeated + 1 * _this.stage),
+		                    _this.enemyNames[
+		                      Math.floor(Math.random() * _this.enemyNames.length)
+		                    ]
+		                  );
+		                }
+		              }, 800);
+		            }
+		          }
