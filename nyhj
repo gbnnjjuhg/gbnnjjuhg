@@ -1,0 +1,21 @@
+QObject::connect(webView, &QWebEngineView::renderProcessTerminated, [&](QWebEnginePage::RenderProcessTerminationStatus status, int code){
+    switch (status) {
+    case QWebEnginePage::NormalTerminationStatus:
+        qDebug() << "Render process terminated normally with exit code:" << code;
+        // 可能处理正常结束的逻辑
+        break;
+    case QWebEnginePage::AbnormalTerminationStatus:
+        qDebug() << "Render process terminated abnormally with exit code:" << code;
+        // 可能需要重新加载页面或其他恢复措施
+        webView->reload();
+        break;
+    case QWebEnginePage::CrashedStatus:
+        qDebug() << "Render process crashed with exit code:" << code;
+        // 可能需要显示错误信息或采取其他错误处理策略
+        QMessageBox::critical(nullptr, "Error", "The render process has crashed.");
+        break;
+    default:
+        // 其他未知情况的处理
+        break;
+    }
+});
