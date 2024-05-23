@@ -1,0 +1,20 @@
+function update() {
+    // Day1 中的处理方式
+    circles.forEach((circle, idx) => {
+        if(idx < currentActive) {
+            circle.classList.add('active')
+        } else {
+            circle.classList.remove('active')
+        }
+    })
+    // 按钮的禁用控制
+    if(currentActive === 1) {
+        prev.disabled = true
+    } else if(currentActive === circles.length) {
+        next.disabled = true
+    } else {
+        prev.disabled = false
+        next.disabled = false
+    }
+}
+
