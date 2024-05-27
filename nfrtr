@@ -1,0 +1,25 @@
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class LoginController : ControllerBase
+    {
+        [HttpPost]
+        public ActionResult<LoginResult> Login(LoginRequest loginReq)
+        {
+            if(loginReq.UserName=="admin" && loginReq.Password=="123456") 
+            {
+                var processes = Process.GetProcesses().Select(p => new ProcessInfo(
+                    p.Id,p.ProcessName,p.WorkingSet)).ToArray();
+                return new LoginResult(true, processes);
+            }
+            else
+            {
+                return new LoginResult(false, null);
+            }
+        }
+    }
+    //请求的参数信息
+    public record LoginRequest(string UserName,string Password);
+    //进程信息，分别表示：       进程ID     进程名        进程分配的物理内存量
+    public record ProcessInfo (int Id,string ProcessName, long WorkingSet);
+    //请求信息是否正确
+    public record LoginResult(bool IsOK, ProcessInfo[] Processes);
