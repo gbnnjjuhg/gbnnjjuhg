@@ -1,0 +1,54 @@
+测试 Counter
+    测试“增加”相关的方法
+      √ 测试 addOne 方法 (6ms)
+      √ 测试 addTwo 方法 (4ms)
+    测试“减少”相关的方法
+      √ 测试 minusOne 方法 (4ms)
+      √ 测试 minusTwo 方法 (4ms)
+
+  console.log Counter.test.js:8
+    beforeAll
+
+  console.log Counter.test.js:12
+    beforeEach
+
+  console.log Counter.test.js:27
+    测试 addOne
+
+  console.log Counter.test.js:17
+    afterEach
+
+  console.log Counter.test.js:12
+    beforeEach
+
+  console.log Counter.test.js:32
+    测试 addTwo
+
+  console.log Counter.test.js:17
+    afterEach
+
+  console.log Counter.test.js:12
+    beforeEach
+
+  console.log Counter.test.js:41
+    测试 minusOne
+
+  console.log Counter.test.js:17
+    afterEach
+
+  console.log Counter.test.js:12
+    beforeEach
+
+  console.log Counter.test.js:46
+    测试 minusTwo
+
+  console.log Counter.test.js:17
+    afterEach
+
+  console.log Counter.test.js:22
+    afterAll
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        4.411s
