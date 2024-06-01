@@ -1,0 +1,66 @@
+
+class MoveBar():
+    def __init__(self, card_pool):
+        self.loadFrame(c.MOVEBAR_BACKGROUND)
+        self.rect = self.image.get_rect()
+        self.rect.x = 90
+        self.rect.y = 0
+        
+        self.card_start_x = self.rect.x + 8
+        self.card_end_x = self.rect.right - 5
+        self.card_pool = card_pool
+        self.card_list = []
+        self.create_timer = -c.MOVEBAR_CARD_FRESH_TIME
+
+    def loadFrame(self, name):
+        frame = tool.GFX[name]
+        rect = frame.get_rect()
+        frame_rect = (rect.x, rect.y, rect.w, rect.h)
+
+        self.image = tool.get_image(tool.GFX[name], *frame_rect, c.WHITE, 1)
+
+    def createCard(self):
+        if len(self.card_list) > 0 and self.card_list[-1].rect.right > self.card_end_x:
+            return False
+        x = self.card_end_x
+        y = 6
+        index = random.randint(0, len(self.card_pool) - 1)
+        card_index = self.card_pool[index]
+        card_name = card_name_list[card_index] + '_move'
+        plant_name = plant_name_list[card_index]
+        self.card_list.append(MoveCard(x, y, card_name, plant_name))
+        return True
+
+    def update(self, current_time):
+        self.current_time = current_time
+        left_x = self.card_start_x
+        for card in self.card_list:
+            card.update(left_x, self.current_time)
+            left_x = card.rect.right + 1
+
+        if(self.current_time - self.create_timer) > c.MOVEBAR_CARD_FRESH_TIME:
+            if self.createCard():
+                self.create_timer = self.current_time
+
+    def checkCardClick(self, mouse_pos):
+        result = None
+        for index, card in enumerate(self.card_list):
+            if card.checkMouseClick(mouse_pos):
+                result = (card.plant_name, card)
+                break
+        return result
+    
+    def checkMenuBarClick(self, mouse_pos):
+        x, y = mouse_pos
+        if(x >= self.rect.x and x <= self.rect.right and
+           y >= self.rect.y and y <= self.rect.bottom):
+            return True
+        return False
+
+    def deleateCard(self, card):
+        self.card_list.remove(card)
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+        for card in self.card_list:
+            card.draw(surface)
