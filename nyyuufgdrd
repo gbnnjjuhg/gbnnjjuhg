@@ -1,0 +1,24 @@
+if (parts.length < partCount) {
+      var part = new PIXI.Sprite(partTexture),
+        scale = 0.2 + Math.random() * 0.8,
+        type = Math.random() > 0.5 ? 1 : 0;
+      part.position.x = w / 2 + Math.random() * 380 - 190;
+      part.position.y = h / 2 + 0;
+      part.anchor.x = 0.5;
+      part.anchor.y = 0.5;
+      part.scale.x = type ? scale : scale * 0.5;
+      part.scale.y = type ? scale : scale * 15;
+      part.blendMode = PIXI.BLEND_MODES.SCREEN;
+      parts.push({
+        sprite: part,
+        ox: part.position.x,
+        oy: part.position.y,
+        x: part.position.x,
+        y: part.position.y,
+        vx: 0,
+        vy: 0,
+        angle: (-Math.PI * 0.5) + (w / 2 - part.position.x) / 750,
+        speed: 0.0001 + Math.random() / 50
+      });
+      stage.addChild(part);
+    }
