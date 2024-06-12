@@ -1,0 +1,32 @@
+ public bool CheckIDCard(string idNumber)
+                    {
+                        if (idNumber.Length == 18)
+                        {
+                            bool check = CheckIDCard18(idNumber);
+                            return check;
+                        }
+                        else if (idNumber.Length == 15)
+                        {
+                            bool check = CheckIDCard15(idNumber);
+                            return check;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    /// <summary>  
+                    /// 18位身份证号码验证  
+                    /// </summary>  
+                    public bool CheckIDCard18(string idNumber)
+                    {
+                        if (idNumber.Length != 18)
+                        {
+                            return false;
+                        }
+                        long n = 0;
+                        if (long.TryParse(idNumber.Remove(17), out n) == false
+                            || n < Math.Pow(10, 16) || long.TryParse(idNumber.Replace('x', '0').Replace('X', '0'), out n) == false)
+                        {
+                            return false;//数字验证  
+                        }
