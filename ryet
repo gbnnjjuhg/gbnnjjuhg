@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/category/category",
+    "pages/user/user",
+    "pages/goods_list/goods_list",
+    "pages/goods_detail/goods_detail",
+    "pages/pay/pay",
+    "pages/order/order",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "科大易购",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#e0620d",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icons/shouye.png",
+        "selectedIconPath": "icons/shouye_o.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "icons/fenlei.png",
+        "selectedIconPath": "icons/fenlei_o.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "icons/gouwuche.png",
+        "selectedIconPath": "icons/gouwuche_o.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "icons/wode.png",
+        "selectedIconPath": "icons/wode_o.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
+}
