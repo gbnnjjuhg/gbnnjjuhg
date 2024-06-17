@@ -1,0 +1,47 @@
+<!-- 自定义顶部 start -->
+<view class="yx-custom" style="padding-top:{{statusBarHeight}}px;background-image: linear-gradient(43deg, #12C206,#00C90F);">
+  <view class="headerBox">
+    <view class="leftAddress">
+      <image class="leftAddressIcon" src="{{imgUrl}}/upload/20220608/addressIcon.png" lazy-load="true"></image>
+      <view class="leftAddressText little">橘猫餐厅</view>
+      <image class="rightJtIcon" src="{{imgUrl}}/upload/20220608/jtBottom.png" lazy-load="true"></image>
+    </view>
+    <view class="appletsTitle"></view>
+  </view>
+</view>
+<!-- 自定义顶部 占位标签 -->
+<view class="yx-empty_custom" style="padding-top:{{statusBarHeight}}px;"></view>
+<!-- banner图 -->
+<view style="background: url({{imgUrl}}/upload/20220608/topBackImg.png);background-size: 100% 100%;width:750rpx;height:324rpx;">
+  <view class="bannerBottom"></view>
+</view>
+<!-- 分类及商品 -->
+<view class="containerBox" style="height:{{nowEquipmentHeight-((statusBarHeight*2)+162)}}px;">
+  <scroll-view class="menu-left" scroll-y="true" style="height:{{nowEquipmentHeight-((statusBarHeight*2)+162)}}px;">
+    <view wx:for="{{menuList}}" class="little {{menuIndex==index?'menu-item-check':'menu-item'}}  {{item.prevClass}} {{item.nextClass}}" 
+    bindtap="clickMenu" data-index="{{index}}">{{item.title}}</view>
+    <view class="bottomHeightBox"></view>
+  </scroll-view>
+  <scroll-view class="menu-right" scroll-y="true" style="height:{{nowEquipmentHeight-((statusBarHeight*2)+162)}}px;">
+    <view class="menuTitleBox">
+      <text>热门推荐</text>
+    </view>
+    <view class="productContainer">
+      <view class="productItem" wx:for="{{20}}" bindtap="goDetail">
+        <view class="productImage" style="background: url({{imgUrl}}/upload/20220608/ky.jpg);background-size: 100% 100%;"></view>
+        <view class="productName little">超级无敌好吃美味烤鸭</view>
+        <view class="productPriceBox">
+          <view class="salePrice">
+            <text style="font-size:22rpx;">￥</text>
+            <text>58.88</text>
+            <text style="font-weight:400;">/g</text>
+          </view>
+          <view class="oldPrice middleLine">￥98</view>
+        </view>
+      </view>
+    </view>
+    <view class="bottomHeightBox"></view>
+  </scroll-view>
+</view>
+<!-- <image class="scanIcon" src="{{imgUrl}}/Areas/dfapi/Content/images/cp.png" lazy-load="true"></image> -->
+<image class="scanIcon" src="{{imgUrl}}{{scanUrl}}" lazy-load="true" bindtap="scanTableCode"></image>
