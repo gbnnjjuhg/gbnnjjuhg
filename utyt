@@ -1,0 +1,19 @@
+# 以下条件都为False
+if not None:
+    print("None is considered False")  # 输出
+ 
+if not False:
+    print("False is considered False")  # 输出
+ 
+if not []:
+    print("Empty list is considered False")  # 输出
+ 
+if not 0:
+    print("Zero is considered False")  # 输出
+ 
+# 非零数值和非空序列为True
+if 1:
+    print("1 is considered True")  # 输出
+ 
+if [1, 2, 3]:
+    print("Non-empty list is considered True")  # 输出
