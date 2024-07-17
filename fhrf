@@ -1,0 +1,129 @@
+    def change_down(self, i, j, num):  
+        """改变动物下方。"""  
+        self.value_swapped = True  
+        self.score += num  
+        for k in range(0, num):  
+            self.animal[i + k][j] = -2  
+  
+    def eliminate_animals(self):  
+        """消除动物。"""  
+        score_level = self.score  
+        self.value_swapped = False  
+  
+        for i in range(self.row, self.row + self.height):  
+            for j in range(self.col, self.col + self.width):  
+                if self.exists_right(i, j, 5):  
+                    self.value_swapped = True  
+                    if self.exists_down(i, j + 2, 3):  
+                        self.animal_num[self.animal[i][j]] += 7  
+                        Sounds.eliminate(5)  # 消除音效 5                        self.change_right(i, j, 5)  
+                        self.change_down(i, j + 2, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_right(i, j, 5)  
+                elif self.exists_right(i, j, 4):  
+                    self.value_swapped = True  
+                    if self.exists_down(i, j + 1, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_right(i, j, 4)  
+                        self.change_down(i, j + 1, 3)  
+                    elif self.exists_down(i, j + 2, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_right(i, j, 4)  
+                        self.change_down(i, j + 2, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 4  
+                        Sounds.eliminate(2)  # 消除音效 2                        self.change_right(i, j, 4)  
+                elif self.exists_right(i, j, 3):  
+                    self.value_swapped = True  
+                    if self.exists_down(i, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_right(i, j, 3)  
+                        self.change_down(i, j, 3)  
+                    elif self.exists_down(i, j + 1, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_right(i, j, 3)  
+                        self.change_down(i, j + 1, 3)  
+                    elif self.exists_down(i, j + 2, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_right(i, j, 3)  
+                        self.change_down(i, j + 2, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 3  
+                        Sounds.eliminate(1)  # 消除音效 1                        self.change_right(i, j, 3)  
+                elif self.exists_down(i, j, 5):  
+                    self.value_swapped = True  
+                    if self.exists_right(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 7  
+                        Sounds.eliminate(5)  # 消除音效 5                        self.change_down(i, j, 5)  
+                        self.change_right(i + 2, j, 3)  
+                    elif self.exists_left(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 7  
+                        Sounds.eliminate(5)  # 消除音效 5                        self.change_down(i, j, 5)  
+                        self.change_left(i + 2, j, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 5)  
+                elif self.exists_down(i, j, 4):  
+                    self.value_swapped = True  
+                    if self.exists_left(i + 1, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 4)  
+                        self.change_left(i + 1, j, 3)  
+                    elif self.exists_right(i + 1, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 4)  
+                        self.change_right(i + 1, j, 3)  
+                    elif self.exists_left(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 4)  
+                        self.change_left(i + 2, j, 3)  
+                    elif self.exists_right(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 4)  
+                        self.change_right(i + 2, j, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 4  
+                        Sounds.eliminate(2)  # 消除音效 2                        self.change_down(i, j, 4)  
+                elif self.exists_down(i, j, 3):  
+                    self.value_swapped = True  
+                    if self.exists_left(i + 1, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 3)  
+                        self.change_left(i + 1, j, 3)  
+                    elif self.exists_right(i + 1, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 3)  
+                        self.change_right(i + 1, j, 3)  
+                    elif self.exists_left(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 3)  
+                        self.change_left(i + 2, j, 3)  
+                    elif self.exists_right(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 3)  
+                        self.change_right(i + 2, j, 3)  
+                    elif self.exists_left(i + 2, j, 2) and self.exists_right(i + 2, j, 2):  
+                        self.animal_num[self.animal[i][j]] += 5  
+                        Sounds.eliminate(3)  # 消除音效 3                        self.change_down(i, j, 3)  
+                        self.change_left(i + 2, j, 2)  
+                        self.change_right(i + 2, j, 2)  
+                    elif self.exists_left(i + 2, j, 2) and self.exists_right(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 3)  
+                        self.change_left(i + 2, j, 2)  
+                        self.change_right(i + 2, j, 3)  
+                    elif self.exists_left(i + 2, j, 3) and self.exists_right(i + 2, j, 2):  
+                        self.animal_num[self.animal[i][j]] += 6  
+                        Sounds.eliminate(4)  # 消除音效 4                        self.change_down(i, j, 3)  
+                        self.change_left(i + 2, j, 3)  
+                        self.change_right(i + 2, j, 2)  
+                    elif self.exists_left(i + 2, j, 3) and self.exists_right(i + 2, j, 3):  
+                        self.animal_num[self.animal[i][j]] += 7  
+                        Sounds.eliminate(5)  # 消除音效 5                        self.change_down(i, j, 3)  
+                        self.change_left(i + 2, j, 3)  
+                        self.change_right(i + 2, j, 3)  
+                    else:  
+                        self.animal_num[self.animal[i][j]] += 3  
+                        Sounds.eliminate(1)  # 消除音效 1                        self.change_down(i, j, 3)  
+  
